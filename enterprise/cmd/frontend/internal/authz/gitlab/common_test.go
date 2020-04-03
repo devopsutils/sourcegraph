@@ -378,7 +378,7 @@ func (m mockAuthnProvider) Refresh(ctx context.Context) error {
 }
 
 func acct(t *testing.T, userID int32, serviceType, serviceID, accountID, oauthTok string) *extsvc.Account {
-	var data extsvc.ExternalAccountData
+	var data extsvc.Data
 
 	var authData *oauth2.Token
 	if oauthTok != "" {
@@ -398,12 +398,12 @@ func acct(t *testing.T, userID int32, serviceType, serviceID, accountID, oauthTo
 
 	return &extsvc.Account{
 		UserID: userID,
-		ExternalAccountSpec: extsvc.ExternalAccountSpec{
+		AccountSpec: extsvc.AccountSpec{
 			ServiceType: serviceType,
 			ServiceID:   serviceID,
 			AccountID:   accountID,
 		},
-		ExternalAccountData: data,
+		Data: data,
 	}
 }
 
